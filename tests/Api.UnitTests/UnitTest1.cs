@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace WebApiServer.UnitTests
+namespace Api.UnitTests
 {
     public class UnitTest1
     {
