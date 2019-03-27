@@ -22,17 +22,6 @@ namespace WebApiServer.Model
 
         [Required]
         public DateTime CreatedAt { get; set; }
-        
-        public Measurment(int id, string name, decimal value, string createdBy, DateTime updatedAt)
-        {
-            Id = id;
-            Name = name;
-            Value = value;
-            CreatedBy = createdBy;
-            CreatedAt = updatedAt;
-        }
-
-
-
+            
     }
 }
