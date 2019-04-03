@@ -21,7 +21,6 @@ namespace WebApiServer.Model
         public string CreatedBy { get; set; }
 
         [Required]
-        public DateTime CreatedAt { get; set; }
-            
+        public DateTime CreatedAt { get; set; }            
     }
 }
