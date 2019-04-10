@@ -10,11 +10,11 @@ namespace WebApiServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MeasurmentController : Controller
+    public class MeasurementController : Controller
     {
-        private readonly IMeasurmentRepository<Measurment> _measurmentRepository;
+        private readonly IMeasurementRepository<Measurement> _measurmentRepository;
 
-        public MeasurmentController(IMeasurmentRepository<Measurment> measurmentRepository)
+        public MeasurementController(IMeasurementRepository<Measurement> measurmentRepository)
         {
             _measurmentRepository = measurmentRepository;
         }
@@ -41,7 +41,7 @@ namespace WebApiServer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Measurment measurment)
+        public async Task<IActionResult> Post([FromBody] Measurement measurment)
         {
             if (measurment == null)
             {
@@ -54,7 +54,7 @@ namespace WebApiServer.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(long id, Measurment measurment)
+        public async Task<IActionResult> Put(long id, Measurement measurment)
         {
             var measurmentToUpdate = await _measurmentRepository.Get(id);
 

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApiServer.Model
 {
-    public class Measurment
+    public class Measurement
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

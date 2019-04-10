@@ -24,8 +24,8 @@ namespace WebApiServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<MeasurmentContext>(options => options.UseSqlServer(Configuration["ConnectionString:LabDb"]));
-            services.AddScoped<IMeasurmentRepository<Measurment>, MeasurmentRepository>();
+            services.AddDbContext<MeasurementContext>(options => options.UseSqlServer(Configuration["ConnectionString:LabDb"]));
+            services.AddScoped<IMeasurementRepository<Measurement>, MeasurmentRepository>();
             services.AddSwaggerGen(c =>
             {
                  c.SwaggerDoc("v1", new Info

@@ -8,7 +8,7 @@ using WebApiServer.DbContexts;
 
 namespace WebApiServer.Migrations
 {
-    [DbContext(typeof(MeasurmentContext))]
+    [DbContext(typeof(MeasurementContext))]
     partial class MeasurmentContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

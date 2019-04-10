@@ -9,7 +9,7 @@ using WebApiServer.DbContexts;
 
 namespace WebApiServer.Migrations
 {
-    [DbContext(typeof(MeasurmentContext))]
+    [DbContext(typeof(MeasurementContext))]
     [Migration("20190327200051_InitialCreate")]
     partial class InitialCreate
     {
