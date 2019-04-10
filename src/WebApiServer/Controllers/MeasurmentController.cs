@@ -32,14 +32,24 @@ namespace WebApiServer.Controllers
         {
             var measurment = await _measurmentRepository.Get(id);
 
+            if(measurment == null)
+            {
+                return NotFound("The Measurment record couldn't be found");
+            }
+
             return Ok(measurment);
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Measurment measurment)
         {
-            await _measurmentRepository.Add(measurment);
+            if (measurment == null)
+            {
+                return BadRequest("Measrument is null");
+            }
 
+            await _measurmentRepository.Add(measurment);
+                        
             return CreatedAtAction(nameof(Post), new { id = measurment.Id, measurment });
         }
 
@@ -47,6 +57,11 @@ namespace WebApiServer.Controllers
         public async Task<IActionResult> Put(long id, Measurment measurment)
         {
             var measurmentToUpdate = await _measurmentRepository.Get(id);
+
+            if (measurmentToUpdate == null)
+            {
+                return NotFound("The Measurment record couldn't be found");
+            }
 
             await _measurmentRepository.Update(measurmentToUpdate, measurment);
 
@@ -58,6 +73,11 @@ namespace WebApiServer.Controllers
         public async Task<IActionResult> Delete(long id)
         {
             var measurmentToDelete = await _measurmentRepository.Get(id);
+
+            if (measurmentToDelete == null)
+            {
+                return NotFound("The Measurment record couldn't be found");
+            }
 
             await _measurmentRepository.Delete(measurmentToDelete);
 
