@@ -53,7 +53,7 @@ namespace WebApiServer.Controllers
             return CreatedAtAction(nameof(Post), new { id = measurment.Id, measurment });
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put(long id, Measurment measurment)
         {
             var measurmentToUpdate = await _measurmentRepository.Get(id);
