@@ -55,7 +55,7 @@ namespace Api.UnitTests.Controllers.MeasurmentTests
             // Arrange 
             var repository = MeasurementContextMocker.GetInMemoryMeasurementsRepository(nameof(get_measurement_with_not_existing_id));
             var controller = new MeasurementController(repository);
-            var expectedMessage = "The Measurement record couldn't be found.";
+            var expectedMessage = "The Measurment record couldn't be found";
 
             // Act
             var response = await controller.Get(10) as ObjectResult;
