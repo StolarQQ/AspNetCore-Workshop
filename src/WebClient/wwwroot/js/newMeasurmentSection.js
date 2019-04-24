@@ -21,7 +21,7 @@
 
     _raiseNewMeasurmentAdded(e) {
         this._listeners.forEach(l => {
-            l.NewMeasurmentAdded(e)
-        })
+            l.NewMeasurmentAdded(e);
+        });
     }
 }
