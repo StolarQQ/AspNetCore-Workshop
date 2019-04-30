@@ -20,7 +20,7 @@ namespace WebClient.Controllers
             return View();
         }
 
-        public IActionResult Measurment()
+        public IActionResult Measurement()
         {
             return View();
         }

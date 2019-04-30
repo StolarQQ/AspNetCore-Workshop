@@ -1,11 +1,10 @@
 ﻿
 class MeasurementListSection{
 
+    addNewMeasurement(measurement) {
 
-    addNewMesurement(measurement) {
-
-        let grid = document.querySelector("#mesurements_container");
-        let newRow = grid.children[i].cloneNode(true);
+        let grid = document.querySelector("#measurements_container");
+        let newRow = grid.children[1].cloneNode(true);
         grid.appendChild(newRow);
 
         let nameColumn = newRow.querySelector('div[data-column-type=\'name\']');
@@ -18,7 +17,7 @@ class MeasurementListSection{
         });
 
         nameColumn.innerHTML = measurement.name;
-        valueColumn.innerHTML = measuement.value;
+        valueColumn.innerHTML = measurement.value;
 
         newRow.classList.remove('d-none');
         grid.appendChild(newRow);

@@ -1,22 +1,17 @@
-﻿
-class MeasurmentController {
+﻿class MeasurementController {
 
     constructor() {
-        this._newMeasurementSection = new NewMeasurmentSection();
+        this._newMeasurementSection = new NewMeasurementSection();
         this._newMeasurementListSection = new MeasurementListSection();
+
         let _this = this;
 
-
         this._newMeasurementSection.addEventListener(new class {
-            NewMeasurementAdded(e) {
-                _this._newMeasurementSection.addEventListener(e);
+            newMeasurementAdded(e) {
+                _this._newMeasurementListSection.addNewMeasurement(e);
             }
         });
-
-        }
-
+    }
 }
 
-
-
-(() => new MeasurmentController())();   
+(() => new MeasurementController())();
