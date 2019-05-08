@@ -13,6 +13,8 @@ namespace WebApiServer
 {
     public class Startup
     {
+        private const string MyAllowSpecificOrigins = "_allowSpeficOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,19 +24,35 @@ namespace WebApiServer
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {            
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                    });
+            });
+                                                         
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<MeasurementContext>(options => options.UseSqlServer(Configuration["ConnectionString:LabDb"]));
             services.AddScoped<IMeasurementRepository<Measurement>, MeasurmentRepository>();
             services.AddSwaggerGen(c =>
             {
-                 c.SwaggerDoc("v1", new Info
-                 {
-                     Title = "WebApiServer",
-                     Version = "v1"
-
-                 });
+                c.SwaggerDoc("v1", new Info
+                {
+                    Title = "WebApiServer",
+                    Version = "v1"
+                });
             });
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,10 +68,11 @@ namespace WebApiServer
                 app.UseHsts();
             }
 
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-               c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiServer API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiServer API V1");
 
             });
 
