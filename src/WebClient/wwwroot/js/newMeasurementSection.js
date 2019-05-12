@@ -17,7 +17,6 @@
             valueInput.value = '';
 
             this._raiseNewMeasurementAdded(obj);
-
         });
     }
 

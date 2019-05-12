@@ -15,7 +15,6 @@ class MeasurementListSection{
 
         removeBtn.addEventListener('click', e => {
             let idColumn = newRow.querySelector('div[data-column-type=\'id\']');
-            this.
             removeBtn.parentElement.parentElement.remove();
             //newRow.remove();
         });
