@@ -13,8 +13,7 @@ namespace WebApiServer
 {
     public class Startup
     {
-        private const string MyAllowSpecificOrigins = "_allowSpeficOrigins";
-
+        private const string MyAllowSpecificOrigins = "_allowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,20 +23,20 @@ namespace WebApiServer
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {            
+        {
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
                     builder =>
                     {
                         builder
-                        .AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials();
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
                     });
             });
-                                                         
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<MeasurementContext>(options => options.UseSqlServer(Configuration["ConnectionString:LabDb"]));
             services.AddScoped<IMeasurementRepository<Measurement>, MeasurmentRepository>();
@@ -65,6 +64,7 @@ namespace WebApiServer
             }
 
             app.UseCors(MyAllowSpecificOrigins);
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
