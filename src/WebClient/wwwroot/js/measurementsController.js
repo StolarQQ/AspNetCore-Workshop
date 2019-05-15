@@ -24,6 +24,13 @@
             }
         });
 
+        this._newMeasurementListSection.addEventListener(new class {
+         
+            measurementRemoved(e) {
+                _this._service.delete(e.id);
+            }
+        })
+
         this._service.addEventListener(new class {
             getResponseReady(e) {
                 JSON.parse(e.data).forEach(i => {
@@ -39,6 +46,10 @@
 
             postResponseReady(e) {
                 _this._newMeasurementListSection.addNewMeasurement(JSON.parse(e.data));
+            }
+
+            deleteResponseReady(e) {
+             
             }
         });
 
